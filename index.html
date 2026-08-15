@@ -76,6 +76,27 @@
   }
   .strength strong{color:var(--rose-deep);font-weight:normal;border-bottom:1px solid var(--rose);}
 
+  /* minmax(0,1fr) にしないと、画像の実寸まで列が広がって横にはみ出す */
+  .gallery{
+    display:grid;grid-template-columns:minmax(0,1fr);gap:26px;
+  }
+  @media(min-width:520px){
+    .gallery{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+    .gallery .wide{grid-column:1 / -1;}
+  }
+  figure{margin:0;min-width:0;}
+  figure img{
+    display:block;width:100%;height:auto;
+    border:1px solid var(--line);background:#fff;
+  }
+  figcaption{
+    font-size:13px;line-height:1.7;margin-top:10px;color:#6f6165;
+  }
+  figcaption b{
+    display:block;font-weight:normal;color:var(--ink);
+    font-size:14px;margin-bottom:2px;
+  }
+
   .links{list-style:none;padding:0;margin:0;}
   .links li{margin-bottom:12px;}
   .links a{
@@ -127,6 +148,49 @@
       ふつうは「紙の人」「動画の人」「Webの人」が別々です。
       <strong>紙もスマホも動画も、ひとりで一貫してお届けできる</strong>ことが、
       わたしの強みです。
+    </div>
+  </section>
+
+  <section>
+    <h2>制作物より</h2>
+    <div class="gallery">
+
+      <figure class="wide">
+        <img src="works/tshirt-banner.jpg" alt="まさみっちゃん降臨Tシャツの販促バナー" loading="lazy">
+        <figcaption>
+          <b>販促バナー</b>
+          オリジナルTシャツの告知用。キャッチコピーの文字組みから
+          写真の配置、申し込みボタンまで一枚に構成しました。
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="works/keychains.jpg" alt="プチキャラのアクリルキーホルダー4種" loading="lazy">
+        <figcaption>
+          <b>アクリルキーホルダー</b>
+          お一人ずつの雰囲気を写したプチキャラを描き起こし、
+          グッズに仕上げました。
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="works/keychain-masami.jpg" alt="アクリルキーホルダー単品" loading="lazy">
+        <figcaption>
+          <b>プチキャラ制作</b>
+          お洋服の柄や小物まで、ご本人らしさが伝わるように
+          細かく描き込んでいます。
+        </figcaption>
+      </figure>
+
+      <figure class="wide">
+        <img src="works/tshirt.jpg" alt="オリジナルTシャツの着用イメージ" loading="lazy">
+        <figcaption>
+          <b>オリジナルTシャツ</b>
+          描き起こしたプチキャラを並べてプリント用のデータに。
+          イラストから版下まで一貫して制作しました。
+        </figcaption>
+      </figure>
+
     </div>
   </section>
 
