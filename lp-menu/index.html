@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fbf6ee;--bg2:#f5ebe0;--card:#fff;--rose:#a33049;--rose-d:#7f2237;--rose-soft:#f6e3e5;--ink:#3a2a2d;--muted:#7a6a6d;--line:#eadcd0}
+:root{--bg:#fbf5ec;--bg2:#f3e6d6;--card:#fff;--rose:#9b2f2a;--rose-d:#7a2220;--rose-soft:#f7e4dc;--sun:#d86f26;--ink:#4a2f22;--muted:#86644f;--line:#e8d6c2}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased}
@@ -28,7 +28,7 @@ section{padding:96px 0}
 h1,h2{font-weight:700;line-height:1.5;margin:0 0 22px;color:var(--ink)}
 h1{font-size:clamp(34px,6.2vw,60px)}
 h2{font-size:clamp(26px,4.4vw,38px)}
-h1 em,h2 em{font-style:normal;color:var(--rose)}
+h1 em,h2 em{font-style:normal;color:var(--sun)}
 .hero-h1{font-size:clamp(22px,7.6vw,42px)}
 .hero-h1 span{display:block;white-space:nowrap}
 @media(max-width:960px){.hero .grid{grid-template-columns:1fr}}
@@ -74,9 +74,9 @@ a.work:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(120,60,70,.1
 .chips i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:inline-block}
 .note2{font-size:12px;color:var(--muted);margin:18px 0 0}
 .work .go{display:inline-block;margin-top:14px;color:var(--rose);font-weight:700;font-size:14px}
-.mood{position:relative;padding:0;background:#000}
+.mood{position:relative;padding:0;background:#3b2418}
 .mood video{display:block;width:100%;height:min(62vw,520px);object-fit:cover;opacity:.92}
-.mood .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 24px;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(60,20,30,.38))}
+.mood .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 24px;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(70,30,15,.4))}
 .mood .ov p{margin:0;text-shadow:0 2px 14px rgba(0,0,0,.35)}
 .mood .ov .l{font-size:13px;letter-spacing:.2em;margin-bottom:10px}
 .mood .ov .t{font-size:clamp(20px,4.6vw,34px);line-height:1.7;font-weight:700}
@@ -87,7 +87,7 @@ a.work:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(120,60,70,.1
 /* price */
 .price{max-width:640px;margin:36px auto 0;background:var(--card);border:2px solid var(--rose);border-radius:24px;padding:40px 30px;text-align:center}
 .price .nm{font-size:22px;font-weight:700}
-.price .yen{font-size:clamp(46px,9vw,64px);color:var(--rose);font-weight:700;line-height:1.3;margin-top:8px}
+.price .yen{font-size:clamp(46px,9vw,64px);color:var(--sun);font-weight:700;line-height:1.3;margin-top:8px}
 .price .yen small{font-size:22px}
 .price .sub{color:var(--muted);font-size:14px}
 .price ul{list-style:none;padding:0;margin:24px auto 0;display:inline-block;text-align:left}
@@ -95,7 +95,7 @@ a.work:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(120,60,70,.1
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
 .steps div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 24px}
-.steps .n{font-size:40px;color:var(--rose);line-height:1}
+.steps .n{font-size:40px;color:var(--sun);line-height:1}
 .steps h3{margin:10px 0 6px;font-size:19px}
 .steps p{margin:0;color:var(--muted);font-size:14px}
 /* QA */
