@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- スマホでも正しい大きさで表示するためのおまじない -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YAWARA智泉 | デザイナー</title>
+
+  <style>
+    /* ===========================================================
+       ① 色の設定
+       名刺の色に合わせています。
+       ここの値を変えるだけでカード全体の雰囲気が変わります。
+       =========================================================== */
+    :root {
+      --rose-deep: #a33049;     /* 名刺の文字に近い、濃いローズ */
+      --rose: #d3607c;          /* メインのピンク */
+      --rose-light: #f5c9d3;    /* 罫線などに使う淡いピンク */
+      --rose-bg: #fdeef1;       /* 背景に敷く、うんと淡いピンク */
+      --cream: #fffaf8;         /* カードの地の色（真っ白より柔らかい） */
+      --gold: #c9a227;          /* ダイヤ印などのアクセント */
+      --text: #4a3a3d;          /* 本文の文字色（黒より柔らかい） */
+      --text-muted: #8d7a7e;    /* 補足の文字色 */
+      --radius: 18px;           /* 角の丸み */
+    }
+
+    /* ページ全体の設定 */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;              /* カードを画面の中央に置くための指定 */
+      align-items: flex-start;
+      justify-content: center;
+      padding: 28px 20px;
+      background: #f3e7ea;
+      color: var(--text);
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.75;
+    }
+
+    /* ===========================================================
+       ② カード本体
+       =========================================================== */
+    .card {
+      width: 100%;
+      max-width: 420px;
+      /* 画面に余裕があれば中央に、カードのほうが高ければ上から表示。
+         align-items: center だけだと、はみ出したとき上が切れてしまいます */
+      margin: auto;
+      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(163, 48, 73, 0.18);
+    }
+
+    /* ===========================================================
+       ③ 上部（写真と名前）
+       名刺と同じ、淡いピンクのグラデーションを敷いています
+       =========================================================== */
+    .hero {
+      position: relative;
+      padding: 30px 28px 26px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.9), transparent 55%),
+        linear-gradient(150deg, #fbdde4 0%, #f7cdd8 45%, #fce6ea 100%);
+    }
+
+    /* --- 白いフレームに入れた写真（名刺の切手風フレームのイメージ） --- */
+    .stamp {
+      display: inline-block;
+      padding: 10px 10px 14px;      /* 下だけ少し広く。写真らしく見えます */
+      background: #ffffff;
+      transform: rotate(-2.5deg);   /* ほんの少し傾けて手作り感を出す */
+      box-shadow: 0 6px 16px rgba(163, 48, 73, 0.22);
+    }
+    .stamp img {
+      display: block;
+      width: 152px;
+      height: 190px;              /* 縦長の形 */
+      object-fit: cover;          /* 写真が伸びずに、はみ出す分だけ切れる */
+      object-position: center 18%;/* 数字を小さくすると写真の上のほうが映ります */
+      border: 1px solid var(--rose-light);
+    }
+
+    /* --- 肩書きと名前 --- */
+    .job {
+      margin: 20px 0 2px;
+      font-size: 13px;
+      letter-spacing: 0.3em;      /* 文字と文字の間隔を広げる */
+      color: var(--rose-deep);
+    }
+    .name {
+      margin: 0;
+      font-family: "Klee One", "Klee", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--rose-deep);
+    }
+    .name-sub {
+      margin: 6px 0 0;
+      font-size: 12.5px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    /* ===========================================================
+       ④ 3つの約束（名刺のダイヤ印の部分）
+       =========================================================== */
+    .promises {
+      margin: 0;
+      padding: 24px 28px 4px;
+      list-style: none;           /* 「・」を消す */
+    }
+    .promises li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding-bottom: 9px;
+      margin-bottom: 9px;
+      border-bottom: 1px dotted var(--rose-light);
+      font-size: 15px;
+    }
+    .promises li:last-child {
+      border-bottom: none;
+    }
+    /* 各行の頭につくダイヤ印 */
+    .promises li::before {
+      content: "◇";
+      flex-shrink: 0;
+      color: var(--rose);
+      font-size: 14px;
+    }
+
+    /* ===========================================================
+       ⑤ メッセージ
+       =========================================================== */
+    .message {
+      margin: 8px 22px 0;
+      padding: 20px 22px;
+      background: var(--rose-bg);
+      border-radius: 14px;
+      text-align: center;
+    }
+    /* 手書き風の "message" の文字 */
+    .message-label {
+      margin: 0 0 8px;
+      font-family: "Snell Roundhand", "Apple Chancery", cursive;
+      font-size: 22px;
+      color: var(--rose);
+    }
+    .message p {
+      margin: 0;
+      font-family: "Klee One", "Klee", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* ===========================================================
+       ⑥ 各セクション
+       =========================================================== */
+    .section {
+      padding: 26px 28px 0;
+    }
+    /* セクション見出し（左右に細い線が伸びるデザイン） */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--rose-deep);
+    }
+    .section-title::after {
+      content: "";
+      flex: 1;                    /* 残りの幅いっぱいに線を伸ばす */
+      height: 1px;
+      background: var(--rose-light);
+    }
+
+    /* できること：タグを並べる */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;            /* 入りきらないタグは次の行へ */
+      gap: 7px;
+    }
+    .tag {
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--rose-bg);
+      color: var(--rose-deep);
+      font-size: 13px;
+    }
+    /* ===========================================================
+       制作実績（作品を並べる場所）
+       写真を差し替えるときは works フォルダに画像を入れて、
+       下の <img src="works/○○.jpg"> のファイル名を変えてください。
+       =========================================================== */
+    .work-main img,
+    .work-thumbs img,
+    .work-banner img {
+      display: block;
+      width: 100%;
+      object-fit: cover;          /* 写真が伸びずに、はみ出す分だけ切れる */
+      border-radius: 10px;
+      border: 1px solid var(--rose-light);
+    }
+
+    /* 一番大きく見せる1枚 */
+    .work-main img {
+      aspect-ratio: 16 / 10;      /* 横長の形に切り取る */
+    }
+
+    /* 小さく3つ並べる部分 */
+    .work-thumbs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;  /* 3等分の列を作る */
+      gap: 7px;
+      margin-top: 7px;
+    }
+    /* 枠。はみ出した写真はここで切られます */
+    .thumb {
+      aspect-ratio: 3 / 4;        /* 縦長の形 */
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--rose-light);
+    }
+    .work-thumbs img {
+      height: 100%;
+      border: none;
+      border-radius: 0;
+    }
+    /* 被写体が小さく写っている写真だけ、拡大して寄せる。
+       数字を大きくするともっとアップになります */
+    .thumb-zoom img {
+      transform: scale(1.6);
+    }
+
+    /* バナーはリンクにしています。<a> は通常そのままだと文字扱いなので、
+       display: block で画像と同じ大きさの「面」にしてから押せるようにします */
+    .work-banner {
+      display: block;
+      margin-top: 14px;
+      text-decoration: none;
+    }
+    .work-banner img {
+      aspect-ratio: 16 / 9;
+      transition: box-shadow 0.2s, transform 0.2s;  /* 変化をなめらかに */
+    }
+    /* マウスを乗せたとき、押せることが伝わるように少し反応させる */
+    .work-banner:hover img {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(163, 48, 73, 0.28);
+    }
+
+    /* 作品につける説明文 */
+    .work-caption {
+      margin: 7px 0 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    /* 申込みページへのリンク */
+    .work-link {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--rose-deep);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rose-light);
+    }
+
+    /* 現在の担当を囲むボックス */
+    .credit {
+      padding: 15px 17px;
+      border: 1px solid var(--rose-light);
+      border-radius: 12px;
+      background: #ffffff;
+    }
+    .credit-label {
+      margin: 0 0 2px;
+      font-size: 11.5px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+    .credit-name {
+      margin: 0 0 5px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--rose-deep);
+    }
+    .credit-role {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ===========================================================
+       ⑦ お問い合わせボタン
+       このカードで一番押してほしい場所です
+       =========================================================== */
+    .contact {
+      margin-top: 30px;
+      padding: 24px 28px 30px;
+      text-align: center;
+      background: var(--rose-bg);
+    }
+    .contact-lead {
+      margin: 0 0 14px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--rose-deep);
+    }
+    .cta {
+      display: block;
+      padding: 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;      /* リンクの下線を消す */
+      box-shadow: 0 8px 20px rgba(163, 48, 73, 0.3);
+    }
+    .cta:hover {                  /* マウスを乗せたとき少し浮かせる */
+      opacity: 0.92;
+    }
+    .contact-note {
+      margin: 12px 0 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- ===== 上部：写真と名前 ===== -->
+    <div class="hero">
+      <div class="stamp">
+        <img src="profile-web.jpg" alt="YAWARA智泉のプロフィール写真">
+      </div>
+      <p class="job">デザイナー</p>
+      <h1 class="name">YAWARA智泉</h1>
+      <p class="name-sub">芝田 智泉（しばた ともみ）</p>
+    </div>
+
+    <!-- ===== 3つの約束 ===== -->
+    <ul class="promises">
+      <li>想いをカタチに…</li>
+      <li>言葉にできない魅力を届ける</li>
+      <li>丁寧に寄り添うデザイン</li>
+    </ul>
+
+    <!-- ===== メッセージ ===== -->
+    <div class="message">
+      <p class="message-label">message</p>
+      <p>
+        デザインがわからなくても大丈夫。<br>
+        丁寧にヒアリングし<br>
+        心を動かすデザインをお届けします。
+      </p>
+    </div>
+
+    <!-- ===== できること ===== -->
+    <div class="section">
+      <p class="section-title">できること</p>
+      <div class="tags">
+        <span class="tag">SNS画像制作</span>
+        <span class="tag">プチキャラ制作</span>
+        <span class="tag">グッズ用イラスト</span>
+        <span class="tag">LINEスタンプ</span>
+        <span class="tag">YouTubeサムネイル</span>
+        <span class="tag">動画編集</span>
+        <span class="tag">AI制作</span>
+        <span class="tag">名刺作成</span>
+        <span class="tag">印刷物作成</span>
+      </div>
+    </div>
+
+    <!-- ===== 制作実績 ===== -->
+    <div class="section">
+      <p class="section-title">制作実績</p>
+
+      <!-- 大きく見せる1枚 -->
+      <div class="work-main">
+        <img src="works/keychains.jpg" alt="プチキャライラストのアクリルキーホルダー4種">
+      </div>
+      <p class="work-caption">似顔絵プチキャラから作るアクリルキーホルダー</p>
+
+      <!-- 小さく3つ並べる -->
+      <div class="work-thumbs">
+        <div class="thumb">
+          <img src="works/tshirt.jpg" alt="オリジナルTシャツとアクリルスタンド">
+        </div>
+        <div class="thumb thumb-zoom">
+          <img src="works/keychain-masami.jpg" alt="まさみっちゃんのアクリルキーホルダー">
+        </div>
+        <div class="thumb thumb-zoom">
+          <img src="works/keychain-dai.jpg" alt="ミュージシャンDAIさんのアクリルキーホルダー">
+        </div>
+      </div>
+
+      <!-- 販売告知バナー（画像全体が申込みページへのリンク） -->
+      <a class="work-banner"
+         href="https://docs.google.com/forms/d/e/1FAIpQLSckpEXjrSTalrg4_JQWd7e-oqPrB5CklGlcPmP3CA1CSgZO2w/viewform"
+         target="_blank" rel="noopener">
+        <img src="works/tshirt-banner.jpg" alt="まさみっちゃん降臨Tシャツの販売告知バナー（申し込みページへ）">
+      </a>
+      <p class="work-caption">
+        まさみっちゃん降臨Tシャツ／販売告知バナー<br>
+        <a class="work-link" href="https://docs.google.com/forms/d/e/1FAIpQLSckpEXjrSTalrg4_JQWd7e-oqPrB5CklGlcPmP3CA1CSgZO2w/viewform" target="_blank" rel="noopener">
+          Tシャツのお申し込みはこちら →
+        </a>
+      </p>
+    </div>
+
+    <!-- ===== 現在の担当 ===== -->
+    <div class="section">
+      <p class="section-title">現在の担当</p>
+      <div class="credit">
+        <p class="credit-label">LINEコンサルタント</p>
+        <p class="credit-name">中川 真光 さん（まさみっちゃん）</p>
+        <p class="credit-role">オープンチャット事務局 / YouTube サムネイル担当</p>
+      </div>
+    </div>
+
+    <!-- ===== お問い合わせ ===== -->
+    <div class="contact">
+      <p class="contact-lead">ご相談・ご依頼はこちら</p>
+      <a class="cta" href="https://lin.ee/X8mEGuf" target="_blank" rel="noopener">
+        LINEからお気軽にどうぞ
+      </a>
+      <p class="contact-note">まずはお話を聞かせてください</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
